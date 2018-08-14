@@ -7,7 +7,8 @@ import {
   Alert,
   Button,
 } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import circle_outline from './images/circle_outline.png';
+import cross from './images/cross.png';
 
 type Props = {};
 export default class App extends Component<Props> {
@@ -32,8 +33,8 @@ export default class App extends Component<Props> {
   renderImage = (row, col) => {
     var value = this.state.gameState[row][col];
     switch(value) {
-      case 1: return <Icon name="circle-outline" style={styles.tileX} />;
-      case -1: return <Icon name="close" style={styles.tileO} />;
+      case 1: return <Image style={styles.image} source={circle_outline}/>;
+      case -1: return <Image style={styles.image} source={cross}/>;
       default: return <View />;
     }
   }
@@ -187,14 +188,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 
-  tileX: {
-    color: 'red',
-    fontSize: 60,
+  image: {
+    width: 92,
+    height: 92,
   },
-
-  tileO: {
-    color: 'green',
-    fontSize: 60,
-  },
-
 });
