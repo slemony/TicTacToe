@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   Alert,
   Button,
+  Image,
 } from 'react-native';
 import circle_outline from './images/circle_outline.png';
 import cross from './images/cross.png';
