@@ -20,18 +20,26 @@ export default class ChoosePlayerScreen extends Component<Props> {
     };
   render() {
     return (
-      <View styles={styles.container}>
-        <Text>One Player</Text>
-        <TouchableHighlight underlayColor="white"
-        onPress={() => {this.props.navigation.navigate('Game')}}>
-          <Text style={styles.buttonText}>One Player</Text>
-        </TouchableHighlight>
+      <View style={styles.container}>
 
-        <Text>Two Player</Text>
-        <TouchableHighlight underlayColor="white"
-        onPress={() => {this.props.navigation.navigate('Game')}}>
-          <Text style={styles.buttonText}>Two Player</Text>
-        </TouchableHighlight>
+        <View style={styles.buttonsty}>
+          <TouchableHighlight underlayColor="white"
+          onPress={() => {this.props.navigation.navigate('Game')}}>
+            <View style={styles.button}>
+            <Text style={styles.buttonText}>One Player</Text>
+            </View>
+          </TouchableHighlight>
+        </View>
+
+        <View style={styles.buttonsty}>
+          <TouchableHighlight underlayColor="white"
+          onPress={() => {this.props.navigation.navigate('Game')}}>
+            <View style={styles.button}>
+            <Text style={styles.buttonText}>Two Player</Text>
+            </View>
+          </TouchableHighlight>
+        </View>
+
       </View>
     );
   }
@@ -39,25 +47,21 @@ export default class ChoosePlayerScreen extends Component<Props> {
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 20,
     alignItems: 'center'
   },
-  button: {
-    marginTop: 120,
-    marginBottom: 30,
-    width: 260,
-    alignItems: 'center',
+  buttonsty: {
+    marginTop: 20,
+    width: 350,
     backgroundColor: '#2196F3'
+  },
+  button:{
+    marginTop: 95,
+    marginBottom: 95,
+    alignItems: 'center',
   },
   buttonText: {
     padding: 20,
+    fontSize: 30,
     color: 'white'
-  },
-  header: {
-    color: 'black',
-    marginTop: 160,
-    padding:  0,
-    fontWeight: 'bold',
-    fontSize: 50
   }
 })
