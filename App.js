@@ -165,7 +165,7 @@ export default class GameScreen extends Component<Props> {
 
         <View style={{paddingBottom: 40}} />
 
-        <Button title="New Game" onPress={() => this.onNewGamePress()} />
+        <Button title="New Game" onPress={this.onNewGamePress} />
 
       </View>
     );
