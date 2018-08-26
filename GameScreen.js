@@ -34,8 +34,8 @@ export default class GameScreen extends Component<Props> {
   renderImage = (row, col) => {
     var value = this.state.gameState[row][col];
     switch(value) {
-      case 1: return <Image style={styles.image} source={circle_outline}/>;
-      case -1: return <Image style={styles.image} source={cross}/>;
+      case 1: return <Image style={styles.image} source={cross}/>;
+      case -1: return <Image style={styles.image} source={circle_outline}/>;
       default: return <View />;
     }
   }
