@@ -119,7 +119,7 @@ export default class IndexScreen extends Component<Props> {
                     this.setState({readyPlayers:this.state.readyPlayers.concat([item])});
                   }
                   console.log(this.state.readyPlayers);
-    
+
                   if(this.state.readyPlayers.length==0){
                     Alert.alert('select player 2');
                   }
@@ -143,9 +143,9 @@ export default class IndexScreen extends Component<Props> {
           theme={'primary'}
           onPress={(readyPlayers) => {
              if(this.state.gameMode==2 && this.state.readyPlayers.length==2){
-            this.props.navigation.navigate('Game', {
-              refresh: this._load,})
-              console.log(this.state.readyPlayers);
+                this.props.navigation.navigate('Game', {
+                refresh: this._load,})
+             console.log(this.state.readyPlayers);
             }
           }}
         />}
@@ -210,4 +210,3 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
 });
-
