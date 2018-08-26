@@ -1,16 +1,71 @@
 import React, { Component } from 'react';
 import {
+  Alert,
+  Platform,
+  StyleSheet,
   Text,
-  View
+  TouchableHighlight,
+  TouchableOpacity,
+  TouchableNativeFeedback,
+  TouchableWithoutFeedback,
+  View,
+  FlatList,
+  AppState
 } from 'react-native';
 
 type Props = {};
-export default class BeginScreen extends Component<Props> {
+export default class ChoosePlayerScreen extends Component<Props> {
+  static navigationOptions = {
+      title: 'Choose Game Mode',
+    };
   render() {
     return (
-      <View>
-        <Text>Begin Screen</Text>
+      <View styles={styles.container}>
+
+        <Text>One Player</Text>
+        <TouchableHighlight underlayColor="white"
+          onPress={() => {this.props.navigation.navigate('ChoosePlayer', {
+            gameMode: 1,
+          }
+        )}}>
+          <Text style={styles.buttonText}>One Player</Text>
+        </TouchableHighlight>
+
+        <Text>Two Player</Text>
+        <TouchableHighlight underlayColor="white"
+          onPress={() => {this.props.navigation.navigate('ChoosePlayer', {
+            gameMode: 2,
+          }
+        )}}>
+          <Text style={styles.buttonText}>Two Player</Text>
+        </TouchableHighlight>
+
       </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    paddingTop: 20,
+    alignItems: 'center'
+  },
+  button: {
+    marginTop: 120,
+    marginBottom: 30,
+    width: 260,
+    alignItems: 'center',
+    backgroundColor: '#2196F3'
+  },
+  buttonText: {
+    padding: 20,
+    color: 'white'
+  },
+  header: {
+    color: 'black',
+    marginTop: 160,
+    padding:  0,
+    fontWeight: 'bold',
+    fontSize: 50
+  }
+})
