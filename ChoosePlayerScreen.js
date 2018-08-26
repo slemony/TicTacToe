@@ -44,7 +44,7 @@ export default class IndexScreen extends Component<Props> {
     this.state = {
       players: [],
       readyPlayers: [],
-      gameMode: '2',
+      gameMode: 2,
       isFetching: false,
       isModalVisible : false,
     };
@@ -52,16 +52,11 @@ export default class IndexScreen extends Component<Props> {
     this._load = this._load.bind(this);
   }
 
-  defineNumberOfPlayers() {
-    if(this.state.gameMode==2)
-    {
-     // this.state.readyPlayers.length=2;
-    }
-  }
-
   componentDidMount() {
     this._load();
-    this.defineNumberOfPlayers();
+    this.setState({
+      gameMode: this.props.navigation.getParam('gameMode'),
+    });
   }
 
   _load() {
@@ -144,7 +139,8 @@ export default class IndexScreen extends Component<Props> {
           onPress={(readyPlayers) => {
              if(this.state.gameMode==2 && this.state.readyPlayers.length==2){
                 this.props.navigation.navigate('Game', {
-                refresh: this._load,})
+                refresh: this._load,
+                gameMode: this.state.gameMode})
              console.log(this.state.readyPlayers);
             }
           }}
