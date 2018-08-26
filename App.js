@@ -18,6 +18,8 @@ export default class GameScreen extends Component<Props> {
     super(props);
 
     this.state = {
+      gameMode: 1,
+      players: ["Player 1", "Player 2"],
       gameState: [
         [0, 0, 0],
         [0, 0, 0],
@@ -29,6 +31,12 @@ export default class GameScreen extends Component<Props> {
 
   ComponentDidMount() {
     this.initializeGame();
+    /*
+    this.setState({
+      gameMode: this.props.navigation.getParam("gameMode"),
+      players: this.props.navigation.getParam("players"),
+    });
+    */
   }
 
   renderImage = (row, col) => {
@@ -96,13 +104,91 @@ export default class GameScreen extends Component<Props> {
     this.setState({currentPlayer: nextPlayer});
 
     var winner = this.getWinner();
-    if (winner == 1) {
-      Alert.alert("Player 1 is the winner");
-      this.initializeGame();
+    if (winner == 0 && this.state.gameMode == 1) {
+      this.botMove();
+    }
+    else if (winner == 1) {
+      Alert.alert(this.state.players[0] + " is the winner");
     }
     else if (winner == -1) {
-      Alert.alert("Player 2 is the winner");
-      this.initializeGame();
+      Alert.alert(this.state.players[1] + " is the winner");
+    }
+  }
+
+  botMove = () => {
+    var botPlayer = -1;
+    var arr = this.state.gameState.slice();
+
+    if (arr[0][0] == 0) {
+      arr[0][0] = botPlayer;
+      this.setState({
+        gameState: arr,
+        currentPlayer: 1,
+      });
+    }
+    else if (arr[0][1] == 0) {
+      arr[0][1] = botPlayer;
+      this.setState({
+        gameState: arr,
+        currentPlayer: 1,
+      });
+    }
+    else if (arr[0][2] == 0) {
+      arr[0][2] = botPlayer;
+      this.setState({
+        gameState: arr,
+        currentPlayer: 1,
+      });
+    }
+    else if (arr[1][0] == 0) {
+      arr[1][0] = botPlayer;
+      this.setState({
+        gameState: arr,
+        currentPlayer: 1,
+      });
+    }
+    else if (arr[1][1] == 0) {
+      arr[1][1] = botPlayer;
+      this.setState({
+        gameState: arr,
+        currentPlayer: 1,
+      });
+    }
+    else if (arr[1][2] == 0) {
+      arr[1][2] = botPlayer;
+      this.setState({
+        gameState: arr,
+        currentPlayer: 1,
+      });
+    }
+    else if (arr[2][0] == 0) {
+      arr[2][0] = botPlayer;
+      this.setState({
+        gameState: arr,
+        currentPlayer: 1,
+      });
+    }
+    else if (arr[2][1] == 0) {
+      arr[2][1] = botPlayer;
+      this.setState({
+        gameState: arr,
+        currentPlayer: 1,
+      });
+    }
+    else if (arr[2][2] == 0) {
+      arr[2][2] = botPlayer;
+      this.setState({
+        gameState: arr,
+        currentPlayer: 1,
+      });
+    }
+
+    var winner = this.getWinner();
+    if (winner == 1) {
+      Alert.alert(this.state.players[0] + " is the winner");
+    }
+    else if (winner == -1) {
+      Alert.alert(this.state.players[1] + " is the winner");
     }
   }
 
