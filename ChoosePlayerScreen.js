@@ -44,19 +44,15 @@ export default class IndexScreen extends Component<Props> {
     this.state = {
       players: [],
       readyPlayers: [],
-      gameMode: 2,
+      gameMode: this.props.navigation.getParam('gameMode'),
       isFetching: false,
       isModalVisible : false,
     };
-    //if(this.state.gameMode==2){Alert.alert('Select Player 1');}
     this._load = this._load.bind(this);
   }
 
   componentDidMount() {
     this._load();
-    this.setState({
-      gameMode: this.props.navigation.getParam('gameMode'),
-    });
   }
 
   _load() {
@@ -102,27 +98,23 @@ export default class IndexScreen extends Component<Props> {
               underlayColor={'#cccccc'}
               onPress={(readyPlayers) => {
                 if(this.state.gameMode==1){
+                  this.setState({readyPlayers:item.id})
                   this.props.navigation.navigate('Game', {
-                  id: item.id,
-                  headerTitle: item.name,
-                  refresh: this._load,
+                  players:this.state.readyPlayers,
                   gameMode: this.state.gameMode,
+                  refresh: this._load,
                 })
-                console.log(item.name);
                 }
                 else if(this.state.gameMode==2){
                   if(this.state.readyPlayers.length!=2)  {
-                    this.setState({readyPlayers:this.state.readyPlayers.concat([item])});
+                    this.setState({readyPlayers:this.state.readyPlayers.concat([item.id])});
                   }
-                  console.log(this.state.readyPlayers);
-
                   if(this.state.readyPlayers.length==0){
                     Alert.alert('select player 2');
                   }
                 }
                 if(this.state.gameMode==2 && this.state.readyPlayers.length==1){
                   this.showStartButton()
-                  console.log(this.state.readyPlayers);
                 }
               }}
             >
@@ -140,9 +132,10 @@ export default class IndexScreen extends Component<Props> {
           onPress={(readyPlayers) => {
              if(this.state.gameMode==2 && this.state.readyPlayers.length==2){
                 this.props.navigation.navigate('Game', {
+                players:this.state.readyPlayers,
+                gameMode: this.state.gameMode,
                 refresh: this._load,
-                gameMode: this.state.gameMode})
-             console.log(this.state.readyPlayers);
+              })
             }
           }}
         />}
