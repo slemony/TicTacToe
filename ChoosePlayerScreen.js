@@ -106,6 +106,7 @@ export default class IndexScreen extends Component<Props> {
                   id: item.id,
                   headerTitle: item.name,
                   refresh: this._load,
+                  gameMode: this.state.gameMode,
                 })
                 console.log(item.name);
                 }
