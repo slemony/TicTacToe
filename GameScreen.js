@@ -111,9 +111,19 @@ export default class GameScreen extends Component<Props> {
     this.initializeGame();
   }
 
+  showTurn = () => {//Players turn
+    var value = this.state.gameState[row][col];
+    switch(value) {
+      //case 1: return this.state = {player: "Player One"};
+      case -1: return this.state = {player: "Player Two"};
+      default: return this.state = {player: "Player One"};
+  }
+
   render() {
     return (
       <View style={styles.container}>
+
+      <Text style={styles.turn}>{this.state.player} Turn</Text>//show turn
 
         <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
 
@@ -179,6 +189,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
+  },
+//players trun text
+  turn: {
+   color: 'black',
+   paddingBottom: 50,
+   fontSize: 25
   },
 
   tile: {
